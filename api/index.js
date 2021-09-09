@@ -21,7 +21,7 @@ app.get('/api/item/:slug', (req, res) => {
   res.end(`Item: ${slug}`);
 });
 
-app.get('/create-email', async (_, res) => {
+app.get('/api/create-email', async (_, res) => {
   const result = await createEmail();
   res.send(result);
 });
