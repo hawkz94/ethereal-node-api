@@ -8,7 +8,7 @@
 
 ## Demo
 ```
-https://ethereal-node-api.vercel.app/api/create-email
+[https://ethereal-node-api.vercel.app/api/create-email](https://ethereal-node-api.vercel.app/api/create-email)
 ```
 
 ## 1. Install dependencies
