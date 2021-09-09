@@ -24,5 +24,10 @@
   yarn dev
 ```
 
+## 1.4 Send GET method
+```
+http://localhost:3000/api/create-email
+```
+
 ## Author
 - Harrisson Ricardo Biaggio
