@@ -1,7 +1,7 @@
 <h1 align="center">Ethereal generate email node api</h1>
 
 ## Notification
-  This application was developed with the intention of solving problems at development time. We have no links with the
+  This application was developed with the intention of solving problems with create email at development time. We have no links with the
   Ethereal project and we do not guarantee its operation.
   Please use the project responsibly!
 
