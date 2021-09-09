@@ -1,7 +1,18 @@
 const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
 
 async function initBot(){
-  const browser = await puppeteer.launch({ headless: true, userDataDir: '/tmp/my-profile-directory' });
+  // const browser = await puppeteer.launch({ headless: true, userDataDir: '/tmp/my-profile-directory' });
+
+  const browser = await chromium.puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
+    userDataDir: '/tmp/my-profile-directory',
+  });
+  
   const context = await browser.createIncognitoBrowserContext();
   const page = await context.newPage();
   await page.setCacheEnabled(false);
