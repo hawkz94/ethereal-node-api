@@ -3,6 +3,7 @@
 ## Notification
   This application was developed with the intention of solving problems with create email at development time. We have no links with the
   Ethereal project and we do not guarantee its operation.
+  It's is not official api.
   Please use the project responsibly!
 
 ## Demo
