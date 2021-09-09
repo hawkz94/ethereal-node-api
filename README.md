@@ -1,4 +1,4 @@
-<h1 align="center">Ethereal generate email node api</h1>
+<h1 align="center">[WIP] Ethereal generate email node api</h1>
 
 ## Notification
   This application was developed with the intention of solving problems with create email at development time. We have no links with the
