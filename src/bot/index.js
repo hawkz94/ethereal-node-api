@@ -1,13 +1,49 @@
 const puppeteer = require('puppeteer');
 
 async function initBot(){
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
+  const browser = await puppeteer.launch({ headless: true, userDataDir: '/tmp/my-profile-directory' });
+  const context = await browser.createIncognitoBrowserContext();
+  const page = await context.newPage();
+  await page.setCacheEnabled(false);
+  
   await page.goto(process.env.ETHEREAL_URL);
-  await page.screenshot({ path: 'example.png' });
-
-  await browser.close();
+  return { page, browser } ;
 };
 
-module.exports = initBot
+async function createEmail() {
+  try {
+    const { page, browser }  = await initBot();
+    await page.waitFor(1000);
+    const buttonCreate = await page.$('.btn.btn-primary');
+    await page.waitFor(500);
+    buttonCreate.click();
+  
+    await page.waitFor(2000);
+  
+    const config = await page.$$eval('code', options => options.map(option => option.textContent));
+
+    if (config.length > 0) {
+      const data = {
+        name: config[0],
+        email: config[1],
+        password: config[2],
+        smtp: config[3],
+        port: config[4],
+        msg: "Success"
+      };
+  
+      await browser.close();
+      return data;
+    }
+
+    await browser.close();
+    return { msg: "Error" };
+  } catch (e) {
+    console.error(e);
+    return { msg: "Error" };
+  }
+};
+
+module.exports = {
+  createEmail
+}
